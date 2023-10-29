@@ -1,5 +1,3 @@
-use client
-
 import { Header } from '@/components/Header'
 import { CartStateProvider } from '@/contexts/CartContext'
 import { globalStyles } from '@/styles/global'
@@ -15,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <CartProvider
         mode="payment"
         cartMode="client-only"
-        stripe={String(process.env.STRIPE_SECRET_KEY)}
+        stripe={String(process.env.STRIPE_PUBLIC_KEY)}
         successUrl={`${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`}
         cancelUrl={String(process.env.NEXT_URL)}
         currency="BRL"
