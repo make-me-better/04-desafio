@@ -61,21 +61,21 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
     return { props: {} }
   }
 
-  const productId = params.id
+  const priceId = params.id
 
-  const product = await stripe.products.retrieve(productId, {
-    expand: ['default_price'],
+  const price = await stripe.prices.retrieve(priceId, {
+    expand: ['product'],
   })
 
-  const price = product.default_price as Stripe.Price
+  const product = price.product as Stripe.Product
 
   return {
     props: {
       product: {
-        id: product.id,
+        // id: product.id,
         name: product.name,
         image: product.images[0],
-        price_id: price.id,
+        price_id: priceId,
         price: price.unit_amount ? price.unit_amount / 100 : 0,
         description: product.description,
       },

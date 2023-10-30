@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <CartProvider
         mode="payment"
         cartMode="client-only"
-        stripe={String(process.env.STRIPE_PUBLIC_KEY)}
-        successUrl={`${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`}
-        cancelUrl={String(process.env.NEXT_URL)}
+        stripe={String(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)}
+        successUrl={`${process.env.NEXT_PUBLIC_NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`}
+        cancelUrl={String(process.env.NEXT_PUBLIC_NEXT_URL)}
         currency="BRL"
         allowedCountries={['BR']}
         billingAddressCollection={true}
